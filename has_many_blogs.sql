@@ -1,0 +1,25 @@
+CREATE TABLE users(
+  id SERIAL PRIMARY KEY,
+  username VARCHAR(90) NOT NULL,
+  first_name VARCHAR(90) DEFAULT NULL,
+  last_name VARCHAR(90) DEFAULT NULL,
+  created_at timestamptz NOT NULL DEFAULT now(),
+  updated_at timestamptz NOT NULL DEFAULT now()
+);
+
+CREATE TABLE posts(
+  id SERIAL PRIMARY KEY,
+  title VARCHAR(180) DEFAULT NULL,
+  url VARCHAR(510) DEFAULT NULL,
+  content TEXT DEFAULT NULL,
+  created_at timestamptz NOT NULL DEFAULT now(),
+  updated_at timestamptz NOT NULL DEFAULT now()
+);
+
+CREATE TABLE comments(
+  id SERIAL PRIMARY KEY,
+  body VARCHAR(510) DEFAULT NULL,
+  created_at timestamptz NOT NULL DEFAULT now(),
+  updated_at timestamptz NOT NULL DEFAULT now()
+);
+
