@@ -9,7 +9,7 @@ WHERE p.userId =200;
 select p.*, u.username 
 from posts p
 LEFT JOIN users u ON p.userId=u.id 
-WHERE u.first_name='Norene', u.last_name='Schmitt';
+WHERE u.first_name='Norene' and u.last_name='Schmitt';
 
 select username 
 from users 
@@ -21,7 +21,7 @@ LEFT JOIN users u ON p.userId=u.id
 where u.created_at < '2015-01-01';
 
 --13
-select p.title 'Post Title', c.*  
+select p.title "Post Title", c.*  
 from comments c
 LEFT JOIN posts p ON c.postId=p.id;
 
@@ -51,7 +51,7 @@ select p.title as post_title,
 p.url as post_url, c.body as comment_body 
 from comments c
 LEFT JOIN posts p ON c.postId=p.id
-LEFT JOIN users u ON c.postId=p.id
+LEFT JOIN users u ON p.userId=u.id
 WHERE c.body like '%matrix%';
 
 --18
@@ -74,7 +74,7 @@ from comments c
 LEFT JOIN posts p ON c.postId=p.id
 LEFT JOIN users up ON p.userId=up.id
 LEFT JOIN users uc ON c.userId=uc.id
-WHERE (c.body like '%SSL%' ||c.body like '%firewall%')
+WHERE (c.body like '%SSL%' OR c.body like '%firewall%')
 and p.content like '%nemo%';
 
 
@@ -89,4 +89,5 @@ where p.created_at > '2015-07-14';
 
 select  count(*)
 from comments c 
-where c.body like '%programming%'
+where c.body like '%programming%';
+
